@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'localhost:8889',
 			'database'  => 'Alumni',
 			'username'  => 'root',
 			'password'  => 'root',
