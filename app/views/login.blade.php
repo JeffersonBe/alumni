@@ -1,13 +1,8 @@
 <!-- app/views/login.blade.php -->
+@extends('layout')
 
-<!doctype html>
-<html>
-<head>
-	<title>Look at me Login</title>
-</head>
-<body>
-
-	{{ Form::open(array('url' => 'login')) }}
+@section('content')
+    {{ Form::open(array('url' => 'login')) }}
 		<h1>Login</h1>
 
 		<!-- if there are login errors, show them here -->
@@ -28,6 +23,4 @@
 
 		<p>{{ Form::submit('Submit!') }}</p>
 	{{ Form::close() }}
-
-</body>
-</html>
+@stop

@@ -17,6 +17,9 @@
 			"app/tests/TestCase.php"
 		]
 	},
+	"require-dev": {
+	"way/generators": "2.*"
+	},
 	"scripts": {
 		"post-install-cmd": [
 			"php artisan clear-compiled",
