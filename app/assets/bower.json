@@ -1,0 +1,8 @@
+{
+  "name": "alumni",
+  "version": "1.0.0",
+  "componentsDirectory": "plugins/",
+  "dependencies": {
+    "bootstrap": "*"
+  }
+}

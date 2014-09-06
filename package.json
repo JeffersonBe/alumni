@@ -1,0 +1,12 @@
+{
+  "name": "alumni",
+  "description": "Package for alumni repository",
+  "author": "Jefferson Bonnaire",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-minify-css": "*",
+    "gulp-uglify": "*"
+  }
+}
