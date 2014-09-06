@@ -1,7 +1,11 @@
 <html>
-    <body>
-        <h1>Laravel Quickstart</h1>
-
+  <head>
+    {{ HTML::style('assets/css/styles.css') }}
+    {{ HTML::style('assets/css/plugins.css') }}
+  </head>
+  <body>
+    <div class="container">
         @yield('content')
-    </body>
+    </div>
+  </body>
 </html>
