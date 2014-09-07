@@ -33,6 +33,13 @@ gulp.task('pluginsScripts', function (){
         .pipe(gulp.dest('public/assets/js'));
 });
 
+gulp.task('pluginsBootstrap', function(){
+  return gulp.src('app/assets/plugins/bootstrap/dist/js/bootstrap.js')
+    .pipe(uglifyjs())
+    .pipe(concat('bootstrap.js'))
+    .pipe(gulp.dest('public/assets/js'));
+})
+
 gulp.task('fonts', function(){
     return gulp.src('app/assets/fonts/**/')
         .pipe(gulp.dest('public/assets/fonts/'))
@@ -54,12 +61,12 @@ gulp.task('dev', function () {
           'app/assets/fonts/**/*',
           'app/assets/images/**/*'
       ],
-      ['pluginsCss','pluginsScripts','css','scripts','fonts','images']
+      ['pluginsCss','pluginsScripts', 'pluginsBootstrap', 'css','scripts','fonts','images']
     );
 });
 
 gulp.task('prod',
-          ['pluginsCss','pluginsScripts','css','scripts','fonts','images']
+          ['pluginsCss','pluginsScripts', 'pluginsBootstrap', 'css','scripts','fonts','images']
          );
 
 gulp.task('default',['prod']);
