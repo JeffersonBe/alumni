@@ -5,10 +5,6 @@
 | Application Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
 Route::get('/', function()
@@ -16,16 +12,39 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-/* Login */
-// route to show the login form
-Route::get('login', array('uses' 	=> 'HomeController@showLogin'));
+/* ------------------------- Login ------------------------- */
 
-// route to process the form
+Route::get('login', array('uses' 	=> 'HomeController@showLogin'));
 Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+/* ------------------------- Logout ------------------------- */
+
 Route::get('logout', array('uses' => 'HomeController@doLogout'));
 
-/* Profile */
-Route::get('profile', 'ProfileController@showProfile');
+/* ------------------------- App ------------------------- */
 
+Route::group(array('before' => 'auth'), function()
+{
+	Route::get('profile', array('uses' => 'ProfileController@showProfile'));
+	Route::get('test', array('as'=>'test','uses' => 'HomeController@showLogin'));
+});
 
-Route::get('test', array('as'=>'test', 'uses' 	=> 'HomeController@showLogin'));
+/* ------------------------- Filter ------------------------- */
+
+Route::filter('auth', function()
+{
+    if (Auth::guest()) return Redirect::to('login');
+});
+//
+
+// Confide routes
+Route::get('users/create', 'UsersController@create');
+Route::post('users', 'UsersController@store');
+Route::get('users/login', 'UsersController@login');
+Route::post('users/login', 'UsersController@doLogin');
+Route::get('users/confirm/{code}', 'UsersController@confirm');
+Route::get('users/forgot_password', 'UsersController@forgotPassword');
+Route::post('users/forgot_password', 'UsersController@doForgotPassword');
+Route::get('users/reset_password/{token}', 'UsersController@resetPassword');
+Route::post('users/reset_password', 'UsersController@doResetPassword');
+Route::get('users/logout', 'UsersController@logout');

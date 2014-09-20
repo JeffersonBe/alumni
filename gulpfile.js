@@ -19,7 +19,7 @@ gulp.task('scripts', function () {
 
 //CSS Compilation
 gulp.task('pluginsCss', function (){
-    return gulp.src(['app/assets/plugins/bootstrap/dist/css/*.css', 'app/assets/plugins/**/*.css'])
+    return gulp.src(['app/assets/plugins/bootstrap/dist/css/bootstrap.css','app/assets/plugins/bootstrap/dist/css/bootstrap-theme.css','app/assets/plugins/**/*.css'])
         .pipe(minifycss())
         .pipe(concat('plugins.css'))
         .pipe(gulp.dest('public/assets/css'));
@@ -27,9 +27,16 @@ gulp.task('pluginsCss', function (){
 
 //JS Compilation
 gulp.task('pluginsScripts', function (){
-    return gulp.src(['app/assets/plugins/jquery/dist/jquery.js'])
+    return gulp.src(['app/assets/plugins/bootstrap/dist/js/bootstrap.js'])
         .pipe(uglifyjs())
         .pipe(concat('plugins.js'))
+        .pipe(gulp.dest('public/assets/js'));
+});
+
+gulp.task('pluginsJquery', function (){
+    return gulp.src(['app/assets/plugins/jquery/dist/jquery.js'])
+        .pipe(uglifyjs())
+        .pipe(concat('jquery.js'))
         .pipe(gulp.dest('public/assets/js'));
 });
 
@@ -66,7 +73,7 @@ gulp.task('dev', function () {
 });
 
 gulp.task('prod',
-          ['pluginsCss','pluginsScripts', 'pluginsBootstrap', 'css','scripts','fonts','images']
+          ['pluginsCss','pluginsScripts','pluginsJquery', 'pluginsBootstrap', 'css','scripts','fonts','images']
          );
 
 gulp.task('default',['prod']);
