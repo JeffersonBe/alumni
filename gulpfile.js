@@ -12,14 +12,15 @@ gulp.task('css', function () {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src('app/assets/js/admin/**/*.js')
+  return gulp.src('app/assets/js/*.js')
             .pipe(uglifyjs())
             .pipe(gulp.dest('public/assets/js/'));
 });
 
 //CSS Compilation
 gulp.task('pluginsCss', function (){
-    return gulp.src(['app/assets/plugins/bootstrap/dist/css/bootstrap.css','app/assets/plugins/bootstrap/dist/css/bootstrap-theme.css','app/assets/plugins/**/*.css'])
+    return gulp.src(['app/assets/plugins/bootstrap/dist/css/bootstrap.css',
+                    'app/assets/plugins/jquery/dist/jquery.js',])
         .pipe(minifycss())
         .pipe(concat('plugins.css'))
         .pipe(gulp.dest('public/assets/css'));
@@ -27,25 +28,13 @@ gulp.task('pluginsCss', function (){
 
 //JS Compilation
 gulp.task('pluginsScripts', function (){
-    return gulp.src(['app/assets/plugins/bootstrap/dist/js/bootstrap.js'])
+    return gulp.src(['app/assets/plugins/bootstrap/dist/js/bootstrap.js',
+                    'app/assets/plugins/jquery/dist/jquery.js',
+                    ])
         .pipe(uglifyjs())
-        .pipe(concat('plugins.js'))
+        .pipe(concat('bootstrap.js'))
         .pipe(gulp.dest('public/assets/js'));
 });
-
-gulp.task('pluginsJquery', function (){
-    return gulp.src(['app/assets/plugins/jquery/dist/jquery.js'])
-        .pipe(uglifyjs())
-        .pipe(concat('jquery.js'))
-        .pipe(gulp.dest('public/assets/js'));
-});
-
-gulp.task('pluginsBootstrap', function(){
-  return gulp.src('app/assets/plugins/bootstrap/dist/js/bootstrap.js')
-    .pipe(uglifyjs())
-    .pipe(concat('bootstrap.js'))
-    .pipe(gulp.dest('public/assets/js'));
-})
 
 gulp.task('fonts', function(){
     return gulp.src('app/assets/fonts/**/')
@@ -68,12 +57,12 @@ gulp.task('dev', function () {
           'app/assets/fonts/**/*',
           'app/assets/images/**/*'
       ],
-      ['pluginsCss','pluginsScripts', 'pluginsBootstrap', 'css','scripts','fonts','images']
+      ['pluginsCss','pluginsScripts', 'css','scripts','fonts','images']
     );
 });
 
 gulp.task('prod',
-          ['pluginsCss','pluginsScripts','pluginsJquery', 'pluginsBootstrap', 'css','scripts','fonts','images']
+          ['pluginsCss','pluginsScripts', 'css','scripts','fonts','images']
          );
 
 gulp.task('default',['prod']);

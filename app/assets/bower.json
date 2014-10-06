@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "componentsDirectory": "plugins/",
   "dependencies": {
-    "bootstrap": "*"
+    "bootstrap": "*",
+    "jquery": "1.11.1"
   }
 }

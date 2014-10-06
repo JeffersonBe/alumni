@@ -60,7 +60,7 @@ class NavigationViewComposer {
     | See, we just add the items in the order we want them to appear
     */
     $menu->push((object)['title' => 'Blog', 'link' => URL::route('test')]);
-    $menu->push((object)['title' => 'User', 'link' => URL::route('test')]);
+    $menu->push((object)['title' => 'User', 'link' => URL::route('logout')]);
 
   /*
     |------------------------------------------------------------------------
