@@ -1,12 +1,14 @@
 <html>
   <head>
+    {{ HTML::style('assets/css/bootstrap.min.css') }}
     {{ HTML::style('assets/css/styles.css') }}
-    {{ HTML::style('assets/css/plugins.css') }}
   </head>
   <body>
-		<div class="site-wrapper">
-  		<div class="site-wrapper-inner">
-    		<div class="cover-container">
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
 
           <div class="masthead clearfix">
             <div class="inner">
@@ -32,9 +34,12 @@
               <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
             </div>
           </div>
-      	</div>
-  		</div>
-	</div>
+
+        </div>
+
+      </div
+    </div>
+  </div>
   {{ HTML::script('assets/js/jquery.js') }}
 	{{ HTML::script('assets/js/plugins.js') }}
 	{{ HTML::script('assets/js/bootstrap.js') }}

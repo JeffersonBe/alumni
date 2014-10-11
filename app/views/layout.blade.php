@@ -1,7 +1,7 @@
 <html>
   <head>
-    {{ HTML::style('assets/css/plugins.css') }}
     {{ HTML::style('assets/css/styles.css') }}
+    {{ HTML::style('assets/css/bootstrap.min.css') }}
   </head>
   <body>
     @include('navigation')
